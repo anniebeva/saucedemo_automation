@@ -19,6 +19,7 @@ class LoginPage(BasePage):
 
     def login(self, username, password):
         """Authenticate user with provided credentials"""
-        self.driver.find_element(*self.USERNAME_INPUT).send_keys(username)
-        self.driver.find_element(*self.PASSWORD_INPUT).send_keys(password)
-        self.driver.find_element(*self.LOGIN_BUTTON).click()
+
+        self.type(self.USERNAME_INPUT, username)
+        self.type(self.PASSWORD_INPUT, password)
+        self.click(self.LOGIN_BUTTON)
