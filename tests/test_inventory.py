@@ -1,26 +1,13 @@
-from utils.driver import get_driver
-from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
-from utils.config import USERNAME, PASSWORD
 
 
-def test_get_products():
+def test_get_products(logged_in_driver):
     """ Test retrieving products from inventory page """
 
-    driver = get_driver()
+    inventory_page = InventoryPage(logged_in_driver)
+    products = inventory_page.get_products()
 
-    try:
-        login_page = LoginPage(driver)
-        login_page.open()
-        login_page.login(USERNAME, PASSWORD)
-        inventory_page = InventoryPage(driver)
+    assert len(products) == 6
 
-        products = inventory_page.get_products()
-
-        assert len(products) == 6
-
-        for product in products:
-            print(product)
-
-    finally:
-        driver.quit()
+    for product in products:
+        print(product)
