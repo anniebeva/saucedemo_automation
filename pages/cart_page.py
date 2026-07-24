@@ -17,7 +17,7 @@ class CartPage(BasePage):
     PRODUCT_DESCRIPTION = (By.CSS_SELECTOR, "[data-test='inventory-item-desc']")
     PRODUCT_PRICE = (By.CSS_SELECTOR, "[data-test='inventory-item-price']")
     REMOVE_BUTTON = (By.CSS_SELECTOR, "button[data-test^='remove']")
-    CHECKOUT_BUTTON = (By.CSS_SELECTOR,"[data-test='checkout']")
+    CHECKOUT_BUTTON = (By.CSS_SELECTOR, "[data-test='checkout']")
 
     def open_cart(self):
         """
@@ -26,10 +26,7 @@ class CartPage(BasePage):
 
         self.click(self.CART_BUTTON)
 
-        WebDriverWait(
-            self.driver,
-            10
-        ).until(
+        WebDriverWait(self.driver, 10).until(
             lambda driver: "cart.html" in driver.current_url
         )
 
@@ -51,9 +48,7 @@ class CartPage(BasePage):
                 Product(
                     name=name,
                     description=description,
-                    price=float(
-                        price.replace("$", "")
-                    )
+                    price=float(price.replace("$", "")),
                 )
             )
 
@@ -70,10 +65,7 @@ class CartPage(BasePage):
             name = item.find_element(*self.PRODUCT_NAME).text
 
             if name == product_name:
-                remove_button = item.find_element(
-                    By.CSS_SELECTOR,
-                    "button"
-                )
+                remove_button = item.find_element(By.CSS_SELECTOR, "button")
 
                 remove_button.click()
                 return

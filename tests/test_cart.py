@@ -14,13 +14,10 @@ def test_add_products_to_cart(logged_in_driver):
     product_names = [
         "Sauce Labs Backpack",
         "Sauce Labs Bike Light",
-        "Sauce Labs Onesie"
+        "Sauce Labs Onesie",
     ]
 
-    selected_products = select_products(
-        inventory_page,
-        product_names
-    )
+    selected_products = select_products(inventory_page, product_names)
 
     assert len(selected_products) == 3
 
@@ -44,15 +41,10 @@ def test_remove_product_from_cart(logged_in_driver):
     cart_page = CartPage(logged_in_driver)
     cart_page.open_cart()
 
-    cart_page.remove_product(
-        "Sauce Labs Backpack"
-    )
+    cart_page.remove_product("Sauce Labs Backpack")
 
     products = cart_page.get_cart_products()
 
-    names = {
-        product.name
-        for product in products
-    }
+    names = {product.name for product in products}
 
     assert "Sauce Labs Backpack" not in names

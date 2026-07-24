@@ -4,7 +4,7 @@ from dataclasses import dataclass
 @dataclass
 class Product:
     """
-    class a product in the SauceDemo store
+    Product in the SauceDemo store
     """
 
     name: str

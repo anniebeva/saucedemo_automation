@@ -13,13 +13,7 @@ class CheckoutInfoPage(BasePage):
     POSTAL_CODE = ("id", "postal-code")
     CONTINUE_BUTTON = ("id", "continue")
 
-
-    def fill_information(
-        self,
-        first_name,
-        last_name,
-        postal_code
-    ):
+    def fill_information(self, first_name, last_name, postal_code):
         """
         Fill checkout customer information
         """
@@ -31,9 +25,6 @@ class CheckoutInfoPage(BasePage):
     def continue_checkout(self):
         self.click(self.CONTINUE_BUTTON)
 
-        WebDriverWait(
-            self.driver,
-            10
-        ).until(
+        WebDriverWait(self.driver, 10).until(
             lambda driver: "checkout-step-two.html" in driver.current_url
         )

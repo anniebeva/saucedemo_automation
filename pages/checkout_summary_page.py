@@ -2,26 +2,17 @@ from pages.base_page import BasePage
 
 from selenium.webdriver.support.ui import WebDriverWait
 
+
 class CheckoutSummaryPage(BasePage):
     """
     Checkout overview page.
     """
 
-    PRODUCT_NAMES = (
-        "css selector",
-        "[data-test='inventory-item-name']"
-    )
+    PRODUCT_NAMES = ("css selector", "[data-test='inventory-item-name']")
 
-    TOTAL_PRICE = (
-        "css selector",
-        "[data-test='total-label']"
-    )
+    TOTAL_PRICE = ("css selector", "[data-test='total-label']")
 
-    FINISH_BUTTON = (
-        "id",
-        "finish"
-    )
-
+    FINISH_BUTTON = ("id", "finish")
 
     def get_products(self):
         """
@@ -30,10 +21,7 @@ class CheckoutSummaryPage(BasePage):
 
         elements = self.find_all(self.PRODUCT_NAMES)
 
-        return [
-            element.text
-            for element in elements
-        ]
+        return [element.text for element in elements]
 
     def get_total(self):
         """
@@ -49,9 +37,6 @@ class CheckoutSummaryPage(BasePage):
 
         self.click(self.FINISH_BUTTON)
 
-        WebDriverWait(
-            self.driver,
-            10
-        ).until(
+        WebDriverWait(self.driver, 10).until(
             lambda driver: "checkout-complete.html" in driver.current_url
         )

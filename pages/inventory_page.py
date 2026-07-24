@@ -9,7 +9,7 @@ class InventoryPage(BasePage):
     Page object representing the inventory page
     """
 
-    INVENTORY_ITEMS = (By.CSS_SELECTOR,  "[data-test='inventory-item']")
+    INVENTORY_ITEMS = (By.CSS_SELECTOR, "[data-test='inventory-item']")
     PRODUCT_NAME = (By.CSS_SELECTOR, "[data-test='inventory-item-name']")
     PRODUCT_DESCRIPTION = (By.CSS_SELECTOR, "[data-test='inventory-item-desc']")
     PRODUCT_PRICE = (By.CSS_SELECTOR, "[data-test='inventory-item-price']")
@@ -33,9 +33,7 @@ class InventoryPage(BasePage):
                 Product(
                     name=name,
                     description=description,
-                    price=float(
-                        price.replace("$", "")
-                    )
+                    price=float(price.replace("$", "")),
                 )
             )
 
@@ -58,9 +56,7 @@ class InventoryPage(BasePage):
                 return Product(
                     name=name,
                     description=description,
-                    price=float(
-                        price.replace("$", "")
-                    )
+                    price=float(price.replace("$", "")),
                 )
 
         raise ValueError(f"Product '{product_name}' not found")
@@ -77,9 +73,7 @@ class InventoryPage(BasePage):
             name = item.find_element(*self.PRODUCT_NAME).text
 
             if name == product_name:
-                item.find_element(
-                    *self.ADD_TO_CART_BUTTON
-                ).click()
+                item.find_element(*self.ADD_TO_CART_BUTTON).click()
 
                 return
 

@@ -20,11 +20,7 @@ def test_checkout_information_form(logged_in_driver):
 
     checkout_info = CheckoutInfoPage(logged_in_driver)
 
-    checkout_info.fill_information(
-        "Anna",
-        "Test",
-        "12345"
-    )
+    checkout_info.fill_information("Anna", "Test", "12345")
 
     checkout_info.continue_checkout()
     assert "checkout-step-two" in logged_in_driver.current_url
@@ -45,11 +41,7 @@ def test_checkout_summary(logged_in_driver):
 
     checkout_info = CheckoutInfoPage(logged_in_driver)
 
-    checkout_info.fill_information(
-        "Anna",
-        "Test",
-        "12345"
-    )
+    checkout_info.fill_information("Anna", "Test", "12345")
 
     checkout_info.continue_checkout()
     summary_page = CheckoutSummaryPage(logged_in_driver)
@@ -74,11 +66,7 @@ def test_checkout_complete(logged_in_driver):
     cart_page.checkout()
 
     checkout_info = CheckoutInfoPage(logged_in_driver)
-    checkout_info.fill_information(
-        "Anna",
-        "Test",
-        "12345"
-    )
+    checkout_info.fill_information("Anna", "Test", "12345")
     checkout_info.continue_checkout()
 
     summary_page = CheckoutSummaryPage(logged_in_driver)

@@ -34,6 +34,7 @@ def driver():
 
     driver.quit()
 
+
 @pytest.fixture
 def logged_in_driver(driver):
     """
@@ -42,6 +43,6 @@ def logged_in_driver(driver):
 
     login_page = LoginPage(driver)
     login_page.open()
-    login_page.login(USERNAME,PASSWORD)
+    login_page.login(USERNAME, PASSWORD)
 
     return driver
