@@ -12,16 +12,43 @@ class CheckoutSummaryPage(BasePage):
 
     TOTAL_PRICE = ("css selector", "[data-test='total-label']")
 
+    PAYMENT_INFORMATION = ("css selector", '[data-test="payment-info-value"]')
+
+    SHIPPING_INFORMATION = ("css selector", '[data-test="shipping-info-value"]')
+
+    TAX = ("css selector", '[data-test="tax-label"]')
+
     FINISH_BUTTON = ("id", "finish")
 
     def get_products(self):
         """
-        Get products from order summary.
+        Get products from order summary
         """
 
         elements = self.find_all(self.PRODUCT_NAMES)
 
         return [element.text for element in elements]
+
+    def get_payment_information(self):
+        """
+        Get payment information
+        """
+
+        return self.find(self.PAYMENT_INFORMATION).text
+
+    def get_shipping_information(self):
+        """
+        Get shipping information
+        """
+
+        return self.find(self.SHIPPING_INFORMATION).text
+
+    def get_tax(self):
+        """
+        Get tax amount
+        """
+
+        return self.find(self.TAX).text
 
     def get_total(self):
         """

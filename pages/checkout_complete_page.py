@@ -12,10 +12,7 @@ class CheckoutCompletePage(BasePage):
 
     BACK_HOME_BUTTON = ("id", "back-to-products")
 
-    GENERATE_PDF_BUTTON = (
-        "id",
-        "generate-pdf-order"
-    )
+    GENERATE_PDF_BUTTON = ("id", "generate-pdf-order")
 
     def get_success_message(self):
         """
@@ -29,9 +26,7 @@ class CheckoutCompletePage(BasePage):
         Download order PDF.
         """
 
-        self.click(
-            self.GENERATE_PDF_BUTTON
-        )
+        self.click(self.GENERATE_PDF_BUTTON)
 
     def back_home(self):
         """
