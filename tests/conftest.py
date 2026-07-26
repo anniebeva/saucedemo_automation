@@ -1,4 +1,5 @@
 import pytest
+import os
 
 from utils.driver import get_driver
 from pages.login_page import LoginPage
@@ -19,13 +20,20 @@ def driver():
     options.add_argument("--disable-popup-blocking")
     options.add_argument("--disable-features=PasswordLeakDetection")
 
+    download_dir = os.path.abspath("downloads")
+
     prefs = {
         "credentials_enable_service": False,
         "profile.password_manager_enabled": False,
         "profile.password_manager_leak_detection": False,
+        "download.default_directory": download_dir,
+        "download.prompt_for_download": False,
+        "download.directory_upgrade": True,
     }
 
     options.add_experimental_option("prefs", prefs)
+
+    os.makedirs(download_dir, exist_ok=True)
 
     driver = webdriver.Chrome(options=options)
     driver.maximize_window()

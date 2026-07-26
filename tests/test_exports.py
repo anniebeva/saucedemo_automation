@@ -24,7 +24,6 @@ def test_export_order_to_xlsx(tmp_path):
 
     filename = tmp_path / "order.xlsx"
 
-    export_order_to_xlsx(order,filename)
+    export_order_to_xlsx(order, filename)
 
     assert filename.exists()
-
