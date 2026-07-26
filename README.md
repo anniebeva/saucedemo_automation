@@ -1,15 +1,15 @@
 # SauceDemo Automation
 
-Automation project for testing the checkout flow on [SauceDemo](https://www.saucedemo.com/).
+Automation project for testing the checkout flow on [SauceDemo](https://www.saucedemo.com/)
 
 The project implements an end-to-end purchase scenario:
-- user authentication;
-- product selection;
-- cart validation and synchronization;
-- checkout process;
-- order confirmation;
-- PDF order generation;
-- XLSX report export.
+- User authentication
+- Product selection
+- Cart validation and synchronization
+- Checkout process
+- Order confirmation
+- PDF order generation
+- XLSX report export
 
 ## Stack
 
